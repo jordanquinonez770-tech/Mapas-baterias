@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mapas mentales: Baterías de portátiles</title>
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f7f8fa; --ink:#1f2933; --muted:#5f6b7a; --line:#c3ccd6; --card:#fff;
+  --conn:#8d9bef; --root:#c5c9ff; --mid:#b9d3f0; --sub:#a9d9e2; --leaf:#a0dccd; --nodeink:#1f2933;
+  --accent:#4a5ad8; --accentink:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14181d; --ink:#e8ecf1; --muted:#9aa5b3; --line:#3a4350; --card:#1c2128;
+    --conn:#6f7fe0; --root:#3a3f86; --mid:#2c4a6b; --sub:#285966; --leaf:#24604f; --nodeink:#eef2f6;
+    --accent:#7d8cf5; --accentink:#14181d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14181d; --ink:#e8ecf1; --muted:#9aa5b3; --line:#3a4350; --card:#1c2128;
+  --conn:#6f7fe0; --root:#3a3f86; --mid:#2c4a6b; --sub:#285966; --leaf:#24604f; --nodeink:#eef2f6;
+  --accent:#7d8cf5; --accentink:#14181d;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:24px 16px 36px}
+h1{font-size:clamp(20px,3vw,26px);margin:0 0 4px;font-weight:650;letter-spacing:-.01em}
+p.sub{margin:0 0 16px;color:var(--muted);font-size:14px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+nav button{font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+nav button[aria-selected="true"]{background:var(--accent);color:var(--accentink);border-color:var(--accent);font-weight:600}
+h2{font-size:16px;margin:0 0 10px;font-weight:600}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:14px}
+svg{display:block}
+.conn{fill:none;stroke:var(--conn);stroke-width:1.8;stroke-linecap:round}
+.n text{fill:var(--nodeink);font-size:13px}
+.n.root rect{fill:var(--root)} .n.mid rect{fill:var(--mid)} .n.sub rect{fill:var(--sub)} .n.leaf rect{fill:var(--leaf)}
+.n.leaf text{font-size:12.5px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Baterías de portátiles</h1>
+  <p class="sub">Tres mapas mentales · Fundamentos de Hardware</p>
+  <nav id="tabs" role="tablist"></nav>
+  <h2 id="ttl"></h2>
+  <div class="wrap"><svg id="svg" role="img"></svg></div>
+</main>
+<script>
+var D=[
+{id:"m1",tab:"Mapa 1",title:"Definición y tipos de baterías portátiles",tree:{t:"Definición y tipos de baterías portátiles",c:[
+ {t:"Tipos de baterías",c:[
+  {t:"Ión de litio (Li-Ion)",c:["Contenido: Solvente orgánico líquido","Producción masiva: Abaratamiento de precios"]},
+  {t:"Polímero de litio (Li-Po)",c:["Contenido: Compuesto polimérico en gel","Características: Buen comportamiento general"]},
+  {t:"Níquel-cadmio (Ni-Cd)",c:["Estado: Prácticamente en desuso"]},
+  {t:"Níquel-metalhidruro (Ni-MH)",c:["Estado: En desuso actual"]}]},
+ {t:"Parámetros de medición técnica",c:[
+  {t:"Estado de carga (SOC)",c:["Definición: Porcentaje de capacidad máxima"]},
+  {t:"Profundidad de descarga (DOD)",c:["Peligro: Umbral de descarga profunda superior al 80%"]},
+  {t:"Resistencia interna",c:["Efecto: Reduce eficiencia y estabilidad térmica"]},
+  {t:"Voltaje de la terminal",c:["Variación: Depende del SOC y corriente"]},
+  {t:"Voltaje de circuito abierto",c:["Definición: Voltaje sin carga aplicada"]}]}]}},
+{id:"m2",tab:"Mapa 2",title:"Mitos vs. Realidades en Baterías de Portátiles",tree:{t:"Comparativa de cinco mitos y realidades sobre baterías de portátiles",c:[
+ {t:"Carga continua al 100 por ciento",c:["Mito: Sobrecarga de la batería","Realidad: Detención automática al completarse","Recomendación: Limitar carga máxima","Nivel ideal: Cargar entre 85 y 90%"]},
+ {t:"Descarga completa al 0 por ciento",c:["Mito: Extiende la vida útil","Realidad: Daño por descarga profunda","Equilibrio: Mantener cerca del 50%","Riesgo: Dejar la batería inutilizable"]},
+ {t:"Congelamiento de batería",c:["Mito: Mejora el rendimiento general","Realidad: Daño por condensación","Riesgo: Corrosión de contactos y sellado","Excepción: Recuperación temporal"]},
+ {t:"Apagar vs hibernar",c:["Mito: Apagar siempre es necesario para ahorrar energía","Realidad: El litio gestiona el consumo","Sustitución: Cambiar modo suspensión por hibernación","Ventaja de hibernación: Consumo cero de energía"]},
+ {t:"Uso de cargadores genéricos",c:["Mito: Todos los cargadores son iguales","Realidad: Riesgo de voltaje inadecuado","Recomendación: Utilizar cargador original","Impacto: Reducción de la vida útil"]}]}},
+{id:"m3",tab:"Mapa 3",title:"Gestión de Carga y Cuidados de la Batería",tree:{t:"Gestión y Cuidado de Baterías de Portátiles",c:[
+ {t:"Cuándo Cargar la Laptop (Rango Óptimo)",c:["Conectar laptop: Cuando esté en un 20% o menos","Desconectar cargador: Entre el 80% y 90%","Evitar el 100%: Llenar el último tramo requiere más esfuerzo celular","Equilibrio ideal: Mantener la batería cerca del 50% de carga"]},
+ {t:"Gestión de Ciclos de Recarga",c:["Definición de ciclo: Uso desde el 100% hasta el 0% de carga","Vida útil estimada: Aproximadamente 1,000 cargas completas","Impacto del uso: Más ciclos consumidos aceleran el debilitamiento","Descarga profunda: Evitar dejar la batería descargada por mucho tiempo"]},
+ {t:"Estrategias Térmicas y Calor",c:["Temperaturas altas: Principal enemigo que apresura el deterioro","Superficies inadecuadas: Evitar camas, cojines y piernas","Refrigeración externa: Uso de bases de refrigeración para juegos","Ambientes extremos: No dejar la laptop expuesta al sol o en autos"]},
+ {t:"Prevención de Sobrecalentamiento",c:["Modos de energía: Ajustar rendimiento y ahorro de batería","Actualización de drivers: Optimizar controladores de AMD, Intel y Nvidia","Uso conectado: Recomendado para juegos o renderización intensa","Uso con batería: Recomendado para tareas livianas u ofimática"]},
+ {t:"Calibración Periódica de la Batería",c:["Proceso: Descargar la batería totalmente y cargarla al 100%","Verificación de salud: Comprobar la autonomía real del equipo","Optimización del sistema: Ayuda a que el indicador muestre el porcentaje correcto"]}]}}
+];
+var NS="http://www.w3.org/2000/svg",NH=32,RG=10,CG=54,PX=14,CW=7.1;
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function norm(n){if(typeof n==="string")return{t:n};if(n.c)n.c=n.c.map(norm);return n}
+function draw(m){
+  var root=norm(JSON.parse(JSON.stringify(m.tree))),cur=12,maxd=0,W=[];
+  (function place(n,d){
+    n.d=d;maxd=Math.max(maxd,d);W[d]=Math.max(W[d]||0,n.t.length*CW+2*PX);
+    if(!n.c){n.y=cur;cur+=NH+RG;return}
+    n.c.forEach(function(ch,i){if(d===0&&i>0)cur+=16;place(ch,d+1)});
+    n.y=(n.c[0].y+n.c[n.c.length-1].y)/2;
+  })(root,0);
+  var X=[12];for(var i=1;i<=maxd;i++)X[i]=X[i-1]+W[i-1]+CG;
+  var w=X[maxd]+W[maxd]+12,h=cur+2,svg=document.getElementById("svg");
+  svg.innerHTML="";svg.setAttribute("viewBox","0 0 "+w+" "+h);
+  svg.style.width="100%";svg.style.minWidth=w+"px";svg.setAttribute("aria-label",m.title);
+  var gc=el("g",{},svg),gn=el("g",{},svg);
+  (function go(n){
+    if(n.c)n.c.forEach(function(ch){
+      var x1=X[n.d]+W[n.d],y1=n.y+NH/2,x2=X[ch.d],y2=ch.y+NH/2,mx=(x1+x2)/2;
+      el("path",{"class":"conn",d:"M"+x1+" "+y1+"C"+mx+" "+y1+" "+mx+" "+y2+" "+x2+" "+y2},gc);go(ch)});
+    var k=n.d===0?"root":!n.c?"leaf":n.d===1?"mid":"sub";
+    var g=el("g",{"class":"n "+k},gn);
+    el("rect",{x:X[n.d],y:n.y,width:W[n.d],height:NH,rx:8},g);
+    var t=el("text",{x:X[n.d]+PX,y:n.y+NH/2+4.5},g),i=n.t.indexOf(": ");
+    if(!n.c&&i>0){var b=el("tspan",{"font-weight":"700"},t);b.textContent=n.t.slice(0,i+1);
+      var r=el("tspan",{},t);r.textContent=n.t.slice(i+1)}
+    else{t.textContent=n.t;if(n.d<2)t.setAttribute("font-weight","600")}
+  })(root);
+}
+function show(id){
+  var m=D.filter(function(x){return x.id===id})[0]||D[0];
+  document.getElementById("ttl").textContent=m.tab+": "+m.title;
+  Array.prototype.forEach.call(document.querySelectorAll("#tabs button"),function(b){b.setAttribute("aria-selected",b.dataset.id===m.id)});
+  draw(m);
+}
+D.forEach(function(m){var b=document.createElement("button");b.textContent=m.tab;b.dataset.id=m.id;b.setAttribute("role","tab");
+  b.onclick=function(){show(m.id)};document.getElementById("tabs").appendChild(b)});
+show((location.hash||"").replace("#","")||"m1");
+</script>
+</body>
+</html>
